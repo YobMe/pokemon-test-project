@@ -1,13 +1,22 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { PokemonList, PokemonDetail } from "../screens";
+import { PokemonListScreen, PokemonDetailScreen } from "../screens";
+import { ScreenNames } from "../constants/screens";
 
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="PokemonList" component={PokemonList} />
-      <Stack.Screen name="PokemonDetail" component={PokemonDetail} />
+      <Stack.Screen
+        name={ScreenNames.PokemonListScreen}
+        component={PokemonListScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={ScreenNames.PokemonDetailScreen}
+        component={PokemonDetailScreen}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }

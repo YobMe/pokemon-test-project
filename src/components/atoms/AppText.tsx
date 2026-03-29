@@ -1,5 +1,16 @@
 import { Text } from "react-native-paper";
+import { TextStyle } from "react-native";
 
-export const AppText = ({ children, style }: any) => {
-  return <Text style={style}>{children}</Text>;
+type AppTextProps = {
+  children: React.ReactNode;
+  style?: TextStyle;
+  className?: string;
+};
+
+export const AppText = ({ children, style, className }: AppTextProps) => {
+  return (
+    <Text style={style} className={className}>
+      {children}
+    </Text>
+  );
 };

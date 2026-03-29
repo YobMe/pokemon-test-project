@@ -1,2 +1,2 @@
-export { default as PokemonList } from "./PokemonList";
-export { default as PokemonDetail } from "./PokemonDetail";
+export { PokemonListScreen } from "./PokemonListScreen";
+export { PokemonDetailScreen } from "./PokemonDetailScreen";
