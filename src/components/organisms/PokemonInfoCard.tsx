@@ -1,11 +1,19 @@
 import { View, Image } from "react-native";
 import { Card } from "react-native-paper";
 import { AppText, TypeBadge, StatBar } from "../../components";
-import { theme } from "../../theme";
+import { useAppTheme } from "../../theme/ThemeProvider";
 
 export const PokemonInfoCard = ({ pokemon }: any) => {
+  const { theme } = useAppTheme();
+
   return (
-    <Card style={{ borderRadius: 20, marginVertical: 10 }}>
+    <Card
+      style={{
+        borderRadius: 20,
+        marginVertical: 10,
+        backgroundColor: theme.colors.surface,
+      }}
+    >
       <Card.Content>
         <View className="flex-row justify-between items-center justify-center">
           <View>

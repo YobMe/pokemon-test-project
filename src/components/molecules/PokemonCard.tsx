@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Card } from "react-native-paper";
-import { theme } from "../../theme";
+import { useAppTheme } from "../../theme/ThemeProvider";
 
 const typeColors: any = {
   grass: "bg-green-500",
@@ -21,6 +21,9 @@ interface PokemonCardProps {
 }
 
 export const PokemonCard = ({ item, onPress }: PokemonCardProps) => {
+  const { theme } = useAppTheme();
+  const styles = useStyles(theme);
+
   return (
     <Card
       style={styles.card}
@@ -29,7 +32,12 @@ export const PokemonCard = ({ item, onPress }: PokemonCardProps) => {
     >
       <Card.Content>
         <View className="flex-row justify-between">
-          <Text className="font-bold capitalize">{item.name}</Text>
+          <Text
+            style={{ color: theme.colors.text }}
+            className="font-bold capitalize"
+          >
+            {item.name}
+          </Text>
           <Text className="text-gray-400">#{item.id}</Text>
         </View>
         <View className="items-center">
@@ -54,15 +62,16 @@ export const PokemonCard = ({ item, onPress }: PokemonCardProps) => {
   );
 };
 
-const styles = StyleSheet.create({
-  card: {
-    shadowColor: "#4b7ee4ff",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
+const useStyles = (theme: any) =>
+  StyleSheet.create({
+    card: {
+      shadowColor: "#4b7ee4ff",
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
 
-    elevation: 0,
+      elevation: 0,
 
-    backgroundColor: theme.colors.surface,
-  },
-});
+      backgroundColor: theme.colors.surface,
+    },
+  });

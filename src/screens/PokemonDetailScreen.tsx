@@ -4,6 +4,7 @@ import { Appbar } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 
 import { PokemonInfoCard, BreedingSection, MovesSection } from "../components";
+import { useAppTheme } from "../theme/ThemeProvider";
 
 const mockPokemon = {
   id: "001",
@@ -32,10 +33,11 @@ const mockPokemon = {
 
 export const PokemonDetailScreen = ({ route }: any) => {
   const { pokemon } = route.params;
+  const { isDark } = useAppTheme();
   const navigation = useNavigation();
 
   return (
-    <View className="flex-1 bg-gray-100">
+    <View className={`flex-1 ${isDark ? "bg-gray-900" : "bg-white"}`}>
       <Appbar.Header style={{ backgroundColor: "#3B82F6" }}>
         <Appbar.BackAction onPress={() => navigation.goBack()} />
         <Appbar.Content title={mockPokemon.name} />

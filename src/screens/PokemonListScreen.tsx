@@ -3,9 +3,10 @@ import { View, Animated, Dimensions } from "react-native";
 import { SearchBar, PokemonCard } from "../components";
 import { useNavigation } from "@react-navigation/native";
 import { ScreenNames } from "../constants/screens";
+import { useAppTheme } from "../theme/ThemeProvider";
 
 const HEADER_MAX_HEIGHT = Dimensions.get("window").height * 0.3;
-const HEADER_MIN_HEIGHT = 120;
+const HEADER_MIN_HEIGHT = 140;
 
 const mockData = [
   {
@@ -145,6 +146,7 @@ type item = {
 
 export const PokemonListScreen = () => {
   const navigation = useNavigation();
+  const { isDark } = useAppTheme();
   const scrollY = useRef(new Animated.Value(0)).current;
 
   const headerHeight = scrollY.interpolate({
@@ -166,19 +168,19 @@ export const PokemonListScreen = () => {
   };
 
   return (
-    <View className="flex-1 bg-white">
+    <View className={`flex-1 ${isDark ? "bg-gray-900" : "bg-white"}`}>
       <Animated.View
         style={{ height: headerHeight }}
         className="bg-blue-500 px-4 pt-10 justify-end"
       >
         <Animated.Text
           style={{ opacity: titleOpacity }}
-          className="text-white text-2xl font-bold mb-4"
+          className="text-white text-4xl font-bold mb-8 ml-4"
         >
-          Who are you looking for?
+          {`Who are you \n looking for?`}
         </Animated.Text>
 
-        <SearchBar />
+        <SearchBar className="mb-8 ml-4 mr-4" />
       </Animated.View>
 
       <Animated.FlatList
