@@ -4,6 +4,8 @@ import { SearchBar, PokemonCard } from "../components";
 import { useNavigation } from "@react-navigation/native";
 import { ScreenNames } from "../constants/screens";
 import { useAppTheme } from "../theme/ThemeProvider";
+import { useGetCharactersQuery } from "../reduxToolkit/services/gameApi";
+import { ActivityIndicator } from "react-native-paper";
 
 const HEADER_MAX_HEIGHT = Dimensions.get("window").height * 0.3;
 const HEADER_MIN_HEIGHT = 140;
@@ -148,6 +150,12 @@ export const PokemonListScreen = () => {
   const navigation = useNavigation();
   const { isDark } = useAppTheme();
   const scrollY = useRef(new Animated.Value(0)).current;
+  const {
+    data: characters,
+    isLoading,
+    isError,
+    error,
+  } = useGetCharactersQuery();
 
   const headerHeight = scrollY.interpolate({
     inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
@@ -183,20 +191,24 @@ export const PokemonListScreen = () => {
         <SearchBar className="mb-8 ml-4 mr-4" />
       </Animated.View>
 
-      <Animated.FlatList
-        contentContainerStyle={{ padding: 8 }}
-        data={mockData}
-        numColumns={2}
-        columnWrapperStyle={{ margin: 8, gap: 12 }}
-        keyExtractor={(item) => item.name}
-        renderItem={({ item }) => (
-          <PokemonCard item={item} onPress={handleCardPress} />
-        )}
-        onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-          { useNativeDriver: false },
-        )}
-      />
+      {isLoading ? (
+        <ActivityIndicator size="large" color="#0000ff" />
+      ) : (
+        <Animated.FlatList
+          contentContainerStyle={{ padding: 8 }}
+          data={characters?.data}
+          numColumns={2}
+          columnWrapperStyle={{ margin: 8, gap: 12 }}
+          keyExtractor={(item) => item.name}
+          renderItem={({ item }) => (
+            <PokemonCard item={item} onPress={handleCardPress} />
+          )}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+            { useNativeDriver: false },
+          )}
+        />
+      )}
     </View>
   );
 };

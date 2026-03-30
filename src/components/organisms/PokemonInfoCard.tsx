@@ -17,12 +17,12 @@ export const PokemonInfoCard = ({ pokemon }: any) => {
       <Card.Content>
         <View className="flex-row justify-between items-center justify-center">
           <View>
-            <AppText>#{pokemon.id}</AppText>
+            <AppText>#{pokemon?.name}</AppText>
             <AppText
               style={{ color: theme.colors.primary, fontWeight: "600" }}
               className="text-2xl"
             >
-              {pokemon.name}
+              {pokemon?.name}
             </AppText>
           </View>
 

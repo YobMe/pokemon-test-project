@@ -11,9 +11,9 @@ export const gameApi = createApi({
         method: "GET",
       }),
     }),
-    getCharacterDetails: builder.query<any, void>({
-      query: (id) => ({
-        url: `/characters/${id}`,
+    getCharacterDetails: builder.query<any, string>({
+      query: (id: string) => ({
+        url: `/character/${id}`,
         method: "GET",
       }),
     }),
