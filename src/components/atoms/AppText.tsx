@@ -1,9 +1,10 @@
+import React from "react";
 import { Text } from "react-native-paper";
-import { TextStyle } from "react-native";
+import { TextStyle, StyleProp } from "react-native";
 
 type AppTextProps = {
   children: React.ReactNode;
-  style?: TextStyle;
+  style?: StyleProp<TextStyle>;
   className?: string;
 };
 

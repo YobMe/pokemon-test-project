@@ -7,7 +7,11 @@ const typeColors: any = {
   fire: "bg-red-500",
 };
 
-export const TypeBadge = ({ type }: { type: string }) => {
+type TypeBadgeProps = {
+  type: string;
+};
+
+export const TypeBadge = ({ type }: TypeBadgeProps) => {
   return (
     <View
       className={`px-3 items-center justify-center rounded-lg mr-2 h-8 ${typeColors[type]}`}

@@ -2,7 +2,11 @@ import { View } from "react-native";
 import { AppText } from "../../components";
 import { useAppTheme } from "../../theme/ThemeProvider";
 
-export const MoveChip = ({ move }: { move: string }) => {
+type MoveChipProps = {
+  move: string;
+};
+
+export const MoveChip = ({ move }: MoveChipProps) => {
   const { isDark } = useAppTheme();
   return (
     <View

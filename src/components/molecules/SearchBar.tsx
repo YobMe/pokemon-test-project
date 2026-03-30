@@ -2,7 +2,11 @@ import { View, TextInput, TouchableOpacity, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useAppTheme } from "../../theme/ThemeProvider";
 
-export const SearchBar = ({ className }: { className?: string }) => {
+type SearchBarProps = {
+  className?: string;
+};
+
+export const SearchBar = ({ className }: SearchBarProps) => {
   const { theme, isDark } = useAppTheme();
   return (
     <View

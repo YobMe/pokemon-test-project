@@ -2,7 +2,15 @@ import { View } from "react-native";
 import { AppText } from "../../components";
 import { useAppTheme } from "../../theme/ThemeProvider";
 
-export const BreedingItem = ({ label, data }: any) => {
+type BreedingItemProps = {
+  label: string;
+  data: {
+    imperial: string;
+    metric: string;
+  };
+};
+
+export const BreedingItem = ({ label, data }: BreedingItemProps) => {
   const { isDark } = useAppTheme();
   return (
     <View className="items-center">

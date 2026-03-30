@@ -3,7 +3,11 @@ import { Card, Button } from "react-native-paper";
 import { AppText, MoveChip } from "../../components";
 import { useAppTheme } from "../../theme/ThemeProvider";
 
-export const MovesSection = ({ moves }: any) => {
+type MovesSectionProps = {
+  moves: string[];
+};
+
+export const MovesSection = ({ moves }: MovesSectionProps) => {
   const { theme } = useAppTheme();
   return (
     <Card

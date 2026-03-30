@@ -26,6 +26,7 @@ export const PokemonCard = ({ item, onPress }: PokemonCardProps) => {
 
   return (
     <Card
+      testID="pokemon-card"
       style={styles.card}
       className="flex-1 rounded-2xl p-3 "
       onPress={() => onPress(item)}
@@ -45,6 +46,7 @@ export const PokemonCard = ({ item, onPress }: PokemonCardProps) => {
             source={{ uri: item.image }}
             className="w-40 h-40"
             resizeMode="contain"
+            accessibilityLabel={`${item.name} image`}
           />
         </View>
         <View className="flex-row flex-wrap">

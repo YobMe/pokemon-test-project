@@ -6,7 +6,8 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "test": "jest --watchAll"
   },
   "dependencies": {
     "@react-navigation/native": "^7.2.2",
@@ -15,6 +16,7 @@
     "expo": "55.0.10-canary-20260328-2049187",
     "expo-linear-gradient": "55.0.10-canary-20260328-2049187",
     "expo-status-bar": "55.0.5-canary-20260328-2049187",
+    "jest-expo": "^55.0.11",
     "nativewind": "^4.2.3",
     "react": "19.2.0",
     "react-native": "0.83.4",
@@ -28,9 +30,17 @@
     "react-redux": "^9.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "@babel/preset-typescript": "^7.28.5",
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^13.3.3",
+    "@types/jest": "^30.0.0",
     "@types/react": "~19.2.2",
     "autoprefixer": "^10.4.27",
+    "babel-jest": "^30.3.0",
     "babel-preset-expo": "^55.0.14-canary-20260328-2049187",
+    "jest": "^30.3.0",
     "postcss": "^8.5.8",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.17",

@@ -3,7 +3,21 @@ import { Card } from "react-native-paper";
 import { AppText, TypeBadge, StatBar } from "../../components";
 import { useAppTheme } from "../../theme/ThemeProvider";
 
-export const PokemonInfoCard = ({ pokemon }: any) => {
+interface PokemonInfoCardProps {
+  pokemon: {
+    name: string;
+    image: string;
+    types: string[];
+    stats: {
+      hp: number;
+      attack: number;
+      defense: number;
+      speed: number;
+    };
+  };
+}
+
+export const PokemonInfoCard = ({ pokemon }: PokemonInfoCardProps) => {
   const { theme } = useAppTheme();
 
   return (

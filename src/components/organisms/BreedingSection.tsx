@@ -3,7 +3,20 @@ import { Card } from "react-native-paper";
 import { AppText, BreedingItem } from "../../components";
 import { useAppTheme } from "../../theme/ThemeProvider";
 
-export const BreedingSection = ({ data }: any) => {
+type BreedingSectionProps = {
+  data: {
+    height: {
+      imperial: string;
+      metric: string;
+    };
+    weight: {
+      imperial: string;
+      metric: string;
+    };
+  };
+};
+
+export const BreedingSection = ({ data }: BreedingSectionProps) => {
   const { theme } = useAppTheme();
   return (
     <Card

@@ -2,7 +2,13 @@ import React, { useEffect, useRef } from "react";
 import { Animated, View } from "react-native";
 import { AppText } from "../../components";
 
-export const StatBar = ({ label, value, color }: any) => {
+type StatBarProps = {
+  label: string;
+  value: number;
+  color: string;
+};
+
+export const StatBar = ({ label, value, color }: StatBarProps) => {
   const animated = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
