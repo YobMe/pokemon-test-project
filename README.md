@@ -50,17 +50,21 @@ After running `yarn start`, scan the QR code with **Expo Go** or press `a` (Andr
 
 ### Light Theme
 
-<div style="display: flex; gap: 10px;">
-    <img src="screenshots/light-main-screen.png" alt="Light Theme - Home">
-    <img src="screenshots/light-detail-screen.png" alt="Light Theme - Detail Screen">
-</div>
+## Screenshots
+
+### Light Theme
+
+<p>
+  <img src="screenshots/light-main-screen.png" width="320" alt="Light Theme - Home Screen">
+  <img src="screenshots/light-detail-screen.png" width="320" alt="Light Theme - Detail Screen">
+</p>
 
 ### Dark Theme
 
-<div style="display: flex; gap: 10px;">
-    <img src="screenshots/dark-main-screen.png" alt="Dark Theme - Home">
-    <img src="screenshots/dark-detail-screen.png" alt="Dark Theme - Detail Screen">
-</div>
+<p>
+  <img src="screenshots/dark-main-screen.png" width="320" alt="Dark Theme - Home Screen">
+  <img src="screenshots/dark-detail-screen.png" width="320" alt="Dark Theme - Detail Screen">
+</p>
 
 _(Add more screenshots here later – e.g. searching, Pokemon cards in action, etc.)_
 
