@@ -119,9 +119,9 @@ I wanted the app to feel polished and respect the user’s preferred appearance.
 ```
 src/
 ├── components├── atoms         # Molecules and reusable components
-              ├── molecules
-              ├── organisms
-              ├── templates           
+├             ├── molecules
+├             ├── organisms
+├             ├── templates           
 ├── screens/                    # Main app screens
 ├── theme/                      # Theme files and provider
 ├── reduxToolkit/               # Store, slices, and API services
