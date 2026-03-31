@@ -3,6 +3,9 @@ import { gameApi } from "../services/gameApi";
 
 const initialState = {
   characters: [],
+  searchQuery: "",
+  selectedCharacter: null,
+  isDarkTheme: false,
 };
 
 const slice = createSlice({
@@ -11,6 +14,15 @@ const slice = createSlice({
   reducers: {
     setCharacters: (state, action) => {
       state.characters = action?.payload;
+    },
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action?.payload;
+    },
+    setSelectedCharacter: (state, action) => {
+      state.selectedCharacter = action?.payload;
+    },
+    setIsDarkTheme: (state, action) => {
+      state.isDarkTheme = action?.payload;
     },
   },
   extraReducers: (builder) => {
@@ -25,5 +37,5 @@ const slice = createSlice({
   },
 });
 
-export const { setCharacters } = slice.actions;
+export const { setCharacters, setIsDarkTheme } = slice.actions;
 export default slice.reducer;

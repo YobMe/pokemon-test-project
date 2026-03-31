@@ -1,18 +1,68 @@
 import { render, fireEvent, screen } from "@testing-library/react-native";
 import { PokemonListScreen } from "../../screens/PokemonListScreen";
 
+// Mock react-native-paper
+jest.mock("react-native-paper", () => {
+  const RN = require("react-native");
+  const Original = jest.requireActual("react-native-paper");
+
+  return {
+    ...Original,
+    ActivityIndicator: (props: any) => <RN.ActivityIndicator {...props} />,
+    IconButton: ({ icon, onPress, ...props }: any) => (
+      <RN.TouchableOpacity
+        onPress={onPress}
+        testID={`icon-button-${String(icon)}`}
+        {...props}
+      >
+        <RN.Text testID="icon-text">{icon || "★"}</RN.Text>
+      </RN.TouchableOpacity>
+    ),
+  };
+});
+
+// Moked @expo/vector-icons  (helps prevent async font loading warnings)
+jest.mock("@expo/vector-icons", () => {
+  const RN = require("react-native");
+  const MockIcon = ({ name, ...props }: any) => (
+    <RN.Text {...props} testID={`icon-${name || "mock"}`}>
+      {name || "★"}
+    </RN.Text>
+  );
+
+  return {
+    __esModule: true,
+    default: MockIcon,
+    Ionicons: MockIcon,
+    MaterialIcons: MockIcon,
+    MaterialCommunityIcons: MockIcon,
+  };
+});
+
 // Mock navigation
 jest.mock("@react-navigation/native", () => ({
   useNavigation: () => ({ navigate: jest.fn() }),
 }));
 
 // Mock theme
+
 jest.mock("../../theme/ThemeProvider", () => ({
   useAppTheme: () => ({
     isDark: false,
     theme: { colors: { surface: "#fff", primary: "#000" } },
   }),
 }));
+
+// Moke vercor icon
+jest.mock("@expo/vector-icons", () => {
+  const React = require("react");
+  return {
+    __esModule: true,
+    default: () => null,
+    Ionicons: () => null,
+    MaterialIcons: () => null,
+  };
+});
 
 // Mock API query
 jest.mock("../../reduxToolkit/services/gameApi", () => ({
